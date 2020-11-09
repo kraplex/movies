@@ -1,36 +1,54 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: "development",
-    devtool: "inline-source-map",
-    entry: './src/index.js',
-
-    output: {
-        filename: "main.[hash].js",
-        path: path.resolve(__dirname, "dist")
-    },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: 'Movies',
-        }),
-        new MiniCssExtractPlugin()
+  mode: "development",
+  entry: "./src/index.js",
+  devtool: "inline-source-map",
+  output: {
+    filename: "main.[hash].js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, "./dist"),
+    open: true,
+    compress: true,
+    hot: true,
+    port: 8080,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
     ],
-
-    module: {
-        rules: [
-            {
-                test: /\.css$/i,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
-            },
-            {
-                test: /\.html$/i,
-                loader: 'html-loader',
-              },
-        ],
-    },
-}
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'webpack Boilerplate',
+      template: path.resolve(__dirname, './src/template.html'), // шаблон
+      filename: 'index.html', // название выходного файла
+    }),
+    new MiniCssExtractPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+};
