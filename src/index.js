@@ -1,8 +1,35 @@
-import './style.css';
-import LoginForm from "./login-form/login-form";
-import List from "./list/list";
+import "./style.css";
+import MovieFullpage from "./movieFullpage/movieFullpage";
 
+const movieBrightburn = new MovieFullpage({
+  movieTitleOrig: "Brightburn",
+  movieTitleRus: "Гори, гори ясно",
+  movieInfo: {
+    год: 2019,
+    страна: "США",
+    слоган: "Imagine What He Could Become",
+    режиссер: "Дэвид Яровески",
+    сценарий: "Брайан Ганн, Марк Ганн",
+    продюсер: "Джеймс Ганн, Брайан Ганн, Марк Ганн",
+    оператор: "Майкл Даллаторре",
+    композитор: "Тим Уильямс",
+  },
+  movieActors: [
+    "Элизабет Бэнкс",
+    "Дэвид Денман",
+    "Джексон А. Данн",
+    "Абрахам Клинкскейлз",
+    "Кристиан Финлейсон",
+    "Дженнифер Холлэнд",
+    "Эмми Хантер",
+    "Мэтт Джонс",
+    "Мередит Хагнер",
+    "Бекки Уолстром",
+  ],
+  movieDescription:
+    "Что, если потерпевший крушение на Земле инопланетный ребенок со сверхспособностями вместо того, чтобы стать героем для человечества, окажется чем-то гораздо более зловещим?",
+  like: 0,
+  movieRate: "IMDb: 6.60 (6688)"
+});
 
-window.addEventListener('popstate', function(e){
-    console.log(e.state.path, e.state.note);
-  })
+movieBrightburn.render();

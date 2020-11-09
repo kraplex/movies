@@ -1,7 +1,7 @@
 <div class="movie-details">
   <div class="my-5">
-    <h1 class="my-0">Гори, гори ясно</h1>
-    <h4 class="my-0">Brightburn</h2>
+    <h1 class="my-0"><%- movieTitleRus%></h1>
+    <h4 class="my-0"><%- movieTitleOrig%></h2>
   </div>
   <div class="row">
     <div class="col-sm-3">
@@ -49,23 +49,16 @@
         </li>
       </ul>
       <div class="movie-description mt-5">
-        <p class="font-weight-bold">IMDb: 6.60 (6688)</p>
-        <p>Что, если потерпевший крушение на Земле инопланетный ребенок со сверхспособностями вместо того, чтобы стать героем для человечества, окажется чем-то гораздо более зловещим?</p>
+        <p class="font-weight-bold"><%-movieRate%></p>
+        <p><%- movieDescription%></p>
       </div>
     </div>
     <div class="col-sm-3">
       <h3>В ролях:</h3>
       <ul class="list-unstyled">
-        <li>Элизабет Бэнкс</li>
-        <li>Дэвид Денман</li>
-        <li>Джексон А. Данн</li>
-        <li>Абрахам Клинкскейлз</li>
-        <li>Кристиан Финлейсон</li>
-        <li>Дженнифер Холлэнд</li>
-        <li>Эмми Хантер</li>
-        <li>Мэтт Джонс</li>
-        <li>Мередит Хагнер</li>
-        <li>Бекки Уолстром</li>
+        <% movieActors.forEach(function(actor) { %>
+          <li><%-actor%></li>
+          <% }); %>
       </ul>
     </div>
   </div>
