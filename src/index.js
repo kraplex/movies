@@ -1,11 +1,13 @@
 import "./style.css";
 import MovieFullpage from "./movieFullpage/movieFullpage";
+import MovieCard from "./moviecard/moviecard"
 
 const movieBrightburn = new MovieFullpage({
+  
   movieTitleOrig: "Brightburn",
   movieTitleRus: "Гори, гори ясно",
   movieInfo: {
-    год: 2019,
+    год: "2019",
     страна: "США",
     слоган: "Imagine What He Could Become",
     режиссер: "Дэвид Яровески",
@@ -32,4 +34,56 @@ const movieBrightburn = new MovieFullpage({
   movieRate: "IMDb: 6.60 (6688)"
 });
 
-movieBrightburn.render();
+const movieRickAndMorty = new MovieFullpage({
+  movieTitleOrig: "Rick and Morty",
+  movieTitleRus: "Рик и Морти",
+  movieInfo: {
+    год: "2013-2019",
+    страна: "США",
+    слоган: "-",
+    режиссер: "Джефф Майерс",
+    сценарий: "Ройланд Джастин, Хармон Дэн",
+    продюсер: "Дж. Майкл Мендель",
+    оператор: "-",
+    композитор: "Райан Элдер",
+  },
+  movieActors: [
+    "Джастин Ройланд", 
+    "Спенсер Грэммер", 
+    "Сара Чок", 
+    "Крис Парнелл",
+    "Эрик Бауза",
+    "Дэн Хэрмон", 
+    "Фил Хендри", 
+    "Брэндон Джонсон",
+    "Райан Ридли", 
+    "Кари Уолгрен"
+  ],
+  movieDescription:
+    "Рик и Морти - американский, научно-фантастический комедийно-приключенческий мультсериал. В центре внимания - неунывающая парочка, состоящая из внука-школьника и дедушки-ученого. Вместе они совершат много увлекательных путешествий и докажут существование невероятных явлений.",
+  like: 0,
+  movieRate: "IMDb: 9.2 (360778)"
+});
+
+const movieBrightburnCard = new MovieCard({ 
+  movieTitleRus: "Гори, гори ясно",
+  movieDescription:
+    "Что, если потерпевший крушение на Земле инопланетный ребенок со сверхспособностями вместо того, чтобы стать героем для человечества, окажется чем-то гораздо более зловещим?",
+  movieRate: "IMDb: 6.60 (6688)"
+});
+
+const movieRickAndMortyCard = new MovieCard({
+  movieTitleRus: "Рик и Морти",
+  movieDescription:
+  "Рик и Морти - американский, научно-фантастический комедийно-приключенческий мультсериал. В центре внимания - неунывающая парочка, состоящая из внука-школьника и дедушки-ученого. Вместе они совершат много увлекательных путешествий и докажут существование невероятных явлений.",
+  movieRate: "IMDb: 9.2 (360778)"
+});
+
+
+const movies = JSON.stringify({
+  "id1": movieBrightburn,
+  "id2": movieRickAndMorty
+});
+
+localStorage.setItem("movies", movies);
+  
