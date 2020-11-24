@@ -1,8 +1,9 @@
 import "./style.css";
-import MovieFullPage from "./movieFullPage/movieFullPage";
-import MovieCard from "./movieCard/movieCard";
+import MovieItem from "./movieItem/movieItem";
+import { v4 as guid } from "uuid";
 
-const movieAFull = new MovieFullPage({
+
+const movieA = new MovieItem({
   movieTitleOrig: "Brightburn",
   movieTitleRus: "Гори, гори ясно",
   movieInfo: {
@@ -35,7 +36,7 @@ const movieAFull = new MovieFullPage({
     "https://st.kp.yandex.net/images/film_iphone/iphone360_1199596.jpg",
 });
 
-const movieBFull = new MovieFullPage({
+const movieB = new MovieItem({
   movieTitleOrig: "Rick and Morty",
   movieTitleRus: "Рик и Морти",
   movieInfo: {
@@ -65,10 +66,10 @@ const movieBFull = new MovieFullPage({
   like: 0,
   movieRate: "IMDb: 9.2 (360778)",
   movieImageUrl:
-    "https://pyxis.nymag.com/v1/imgs/cd8/804/e0f612fa12d17e68e3d68ccf55f93cac4f-06-rick-morty.rhorizontal.w700.jpg",
+    "http://www.komilfobook.ru/media/zoo/images/cover1_05ccd38953ec28234ead09c57784b878.jpg",
 });
 
-const movieCFull = new MovieFullPage({
+const movieC = new MovieItem({
   movieTitleOrig: "August Rash",
   movieTitleRus: "Август Раш",
   movieInfo: {
@@ -96,17 +97,83 @@ const movieCFull = new MovieFullPage({
     "https://static.hdrezka.ac/i/2014/4/8/s93c5f0aa9673po43p83d.jpg",
 });
 
-const movieACard = new MovieCard(movieAFull);
-const movieBCard = new MovieCard(movieBFull);
-const movieCCard = new MovieCard(movieCFull);
+const movieD = new MovieItem({
+  movieTitleOrig: "The Social Network",
+  movieTitleRus: "Социальная сеть",
+  movieInfo: {
+    year: "2010",
+    country: "США",
+    tagline: "Нельзя завести 500 милионов друзей не нажив ни одного врага",
+    director: "Дэвид Финчер",
+    scenario: "Аарон Соркин",
+    producer:
+      "Кевин Спейси, Дана Брунетти, Шон Чаффин, Майкл Де Лука, Скотт Рудин",
+    camera: "Джефф Кроненвет",
+    composer: "	Трент Резнор, Аттикус Росс",
+  },
+  movieActors: [
+    "Джесси Айзенберг",
+    "Эндрю Гарфилд",
+    "Джастин Тимберлейк",
+    "Арми Хаммер",
+    "Бренда Сонг",
+    "Рашида Джонс",
+    "Джозеф Маззелло",
+    "Макс Мингелла",
+    "Руни Мара",
+    "Тревор Райт",
+    "Дакота Джонсон",
+    "Малис Джау",
+  ],
+  movieDescription:
+    " В фильме рассказывается о создании одной из самых популярных в Интернете социальных сетей — Facebook. Оглушительный успех этой сети среди пользователей по всему миру навсегда изменил жизнь студентов-однокурсников гарвардского университета, которые основали её в 2004 году и за несколько лет стали самыми молодыми мультимиллионерами в США... Фильм - адаптация книги Бена Мезрича.",
+  like: 0,
+  movieRate: "IMDb: 7.7 (616692)",
+  movieImageUrl:
+    "https://images-na.ssl-images-amazon.com/images/I/518zV7F39qL._AC_.jpg",
+});
+
+if (!localStorage.getItem("movie")) {
+  const moviesTestObj = {
+    id: movieA,
+    id: movieB,
+    id: movieC,
+    id: movieD,
+  };
+
+  console.log(moviesTestObj);
+
+  const moviesJson = JSON.stringify(moviesTestObj);
+  localStorage.setItem("movies", moviesJson);
+}
 
 const main = document.querySelector("main");
+main.insertAdjacentHTML("beforeend", movieA.renderCard());
 
-main.insertAdjacentHTML('beforeend', movieBCard.render());
-main.insertAdjacentHTML('beforeend', movieACard.render());
-main.insertAdjacentHTML('beforeend', movieCCard.render());
+const buttonAllMovies = document.querySelector("#show_all_movies");
+buttonAllMovies.addEventListener("click", renderAllMovies);
 
-/* main.appendChild(movieACard.render());
-main.appendChild(movieBCard.render());
-main.appendChild(movieCCard.render());
- */
+function renderAllMovies() {
+  const movies = JSON.parse(localStorage.getItem("movies"));
+  for (let key in movies) {
+    const movie = new MovieItem(movies[key]);
+    main.insertAdjacentHTML("beforeend", movie.renderCard());
+  }
+}
+
+const test = document.querySelector(".more");
+
+test.addEventListener("click", (event) => {
+  renderFullPage(event.target.offsetParent.offsetParent.id);
+});
+
+function renderFullPage(id) {
+  const movies = JSON.parse(localStorage.getItem("movies"));
+  for (let key in movies) {
+    const obj = movies[key];    
+    if (obj.id === id) {
+     const movie = new MovieItem(movies[key]);
+      main.insertAdjacentHTML("beforeend", movie.renderFullPage());
+    }
+  }
+}

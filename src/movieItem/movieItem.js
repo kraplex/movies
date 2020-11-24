@@ -1,11 +1,16 @@
 import template from "lodash.template";
-import html from "./movieFullPage.html";
+import movieFullPage from "./movieFullPage.html";
+import movieCard from "./movieCard.html";
+import { v4 as guid } from "uuid";
 
-const templateRenderer = template(html);
 
-class MovieFullPage {
+const templateMovieFullPage = template(movieFullPage);
+const templateMovieCard = template(movieCard);
+
+class MovieItem {
   constructor(props) {
-    (this.id = props.id || ""),     
+    const movieId = guid();
+    (this.id = movieId),
     (this.movieTitleOrig = props.movieTitleOrig),
     (this.movieTitleRus = props.movieTitleRus),
     (this.movieInfo = props.movieInfo),
@@ -15,8 +20,9 @@ class MovieFullPage {
     (this.movieRate = props.movieRate);
     (this.movieImageUrl = props.movieImageUrl)
   }
-  render() {
-    const t = templateRenderer({
+
+  renderFullPage() {
+    const movieFullPage = templateMovieFullPage({
       movieTitleRus: this.movieTitleRus,
       movieTitleOrig: this.movieTitleOrig,
       movieDescription: this.movieDescription,
@@ -31,15 +37,26 @@ class MovieFullPage {
       movieComposer: this.movieInfo.composer,
       movieRate: this.movieRate,
       movieDescription: this.movieDescription,
-      movieImageUrl: this.movieImageUrl
+      movieImageUrl: this.movieImageUrl,
+      movieId: this.id
     });
-
-    const movieFullPage = document.createElement("div");
-    movieFullPage.className = "movie_full_page";
-    movieFullPage.innerHTML = t;
     
     return movieFullPage;
   }
+
+  renderCard() {
+    const movieCard = templateMovieCard({
+      movieTitleRus: this.movieTitleRus,
+      movieDescription: this.movieDescription,
+      movieRate: this.movieRate,
+      movieImageUrl: this.movieImageUrl,
+      movieId: this.id
+    });
+
+    return movieCard;
+  }
+
+  
 }
 
-export default MovieFullPage;
+export default MovieItem;
