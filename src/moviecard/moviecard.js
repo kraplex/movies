@@ -1,30 +1,29 @@
 import template from "lodash.template";
-import html from "./moviecard.html";
+import html from "./movieCard.html";
 
 const templateRenderer = template(html);
 
 class MovieCard {
-    constructor(props) {   
-        
-        (this.movieTitleRus = props.movieTitleRus),   
-        (this.movieDescription = props.movieDescription),
-        (this.movieRate = props.movieRate)
-      }
+  constructor(props) {
+    (this.movieTitleRus = props.movieTitleRus),
+      (this.movieDescription = props.movieDescription),
+      (this.movieRate = props.movieRate);
+    this.movieImageUrl = props.movieImageUrl;
+  }
 
-    render() {
-     
+  render() {
+    const t = templateRenderer({
+      movieTitleRus: this.movieTitleRus,
+      movieDescription: this.movieDescription,
+      movieRate: this.movieRate,
+      movieImageUrl: this.movieImageUrl,
+    });
 
-        const t = templateRenderer({
-            movieTitleRus: this.movieTitleRus,
-            movieDescription: this.movieDescription,
-            movieRate: this.movieRate,
-        });
+    const movieCard = document.createElement("div");
+    movieCard.className = "movie_card";
+    movieCard.innerHTML = t;
 
-        const main = document.querySelector("main");
-        const movieDetails = document.createElement("div");
-        movieDetails.className = "movieDetails";
-        movieDetails.innerHTML = t;
-        main.appendChild(movieDetails);
-    }
+    return movieCard;
+  }
 }
 export default MovieCard;
