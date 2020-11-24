@@ -101,8 +101,12 @@ const movieBCard = new MovieCard(movieBFull);
 const movieCCard = new MovieCard(movieCFull);
 
 const main = document.querySelector("main");
-const wrapper = main.appendChild(document.createElement("div"));
 
-wrapper.appendChild(movieACard.render());
-wrapper.appendChild(movieBCard.render());
-wrapper.appendChild(movieCCard.render());
+main.insertAdjacentHTML('beforeend', movieBCard.render());
+main.insertAdjacentHTML('beforeend', movieACard.render());
+main.insertAdjacentHTML('beforeend', movieCCard.render());
+
+/* main.appendChild(movieACard.render());
+main.appendChild(movieBCard.render());
+main.appendChild(movieCCard.render());
+ */

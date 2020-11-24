@@ -19,11 +19,7 @@ class MovieCard {
       movieImageUrl: this.movieImageUrl,
     });
 
-    const movieCard = document.createElement("div");
-    movieCard.className = "movie_card";
-    movieCard.innerHTML = t;
-
-    return movieCard;
+    return t;
   }
 }
 export default MovieCard;
