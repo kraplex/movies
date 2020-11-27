@@ -1,55 +1,39 @@
 import MovieItem from "../movieItem/movieItem";
-import { v4 as guid } from "uuid";
-
-
-
-class MoviesStorage {
-    constructor(movie) {
-        const movieId = guid();
-        
-        this.movieId = movie;
-       
-    }
-
-}
-
-
-
 
 const movieA = new MovieItem({
-    movieTitleOrig: "Brightburn",
-    movieTitleRus: "Гори, гори ясно",
-    movieInfo: {
-      year: "2019",
-      country: "США",
-      tagline: "Imagine What He Could Become",
-      director: "Дэвид Яровески",
-      scenario: "Брайан Ганн, Марк Ганн",
-      producer: "Джеймс Ганн, Брайан Ганн, Марк Ганн",
-      camera: "Майкл Даллаторре",
-      composer: "Тим Уильямс",
-    },
-    movieActors: [
-      "Элизабет Бэнкс",
-      "Дэвид Денман",
-      "Джексон А. Данн",
-      "Абрахам Клинкскейлз",
-      "Кристиан Финлейсон",
-      "Дженнифер Холлэнд",
-      "Эмми Хантер",
-      "Мэтт Джонс",
-      "Мередит Хагнер",
-      "Бекки Уолстром",
-    ],
-    movieDescription:
-      "Что, если потерпевший крушение на Земле инопланетный ребенок со сверхспособностями вместо того, чтобы стать героем для человечества, окажется чем-то гораздо более зловещим?",
-    like: 0,
-    movieRate: "IMDb: 6.60 (6688)",
-    movieImageUrl:
-      "https://st.kp.yandex.net/images/film_iphone/iphone360_1199596.jpg",
-  });
-  
-  const movieB = new MovieItem({
+  movieTitleOrig: "Brightburn",
+  movieTitleRus: "Гори, гори ясно",
+  movieInfo: {
+    year: "2019",
+    country: "США",
+    tagline: "Imagine What He Could Become",
+    director: "Дэвид Яровески",
+    scenario: "Брайан Ганн, Марк Ганн",
+    producer: "Джеймс Ганн, Брайан Ганн, Марк Ганн",
+    camera: "Майкл Даллаторре",
+    composer: "Тим Уильямс",
+  },
+  movieActors: [
+    "Элизабет Бэнкс",
+    "Дэвид Денман",
+    "Джексон А. Данн",
+    "Абрахам Клинкскейлз",
+    "Кристиан Финлейсон",
+    "Дженнифер Холлэнд",
+    "Эмми Хантер",
+    "Мэтт Джонс",
+    "Мередит Хагнер",
+    "Бекки Уолстром",
+  ],
+  movieDescription:
+    "Что, если потерпевший крушение на Земле инопланетный ребенок со сверхспособностями вместо того, чтобы стать героем для человечества, окажется чем-то гораздо более зловещим?",
+  like: 0,
+  movieRate: "IMDb: 6.60 (6688)",
+  movieImageUrl:
+    "https://st.kp.yandex.net/images/film_iphone/iphone360_1199596.jpg",
+});
+
+const movieB = new MovieItem({
   movieTitleOrig: "Rick and Morty",
   movieTitleRus: "Рик и Морти",
   movieInfo: {
@@ -80,9 +64,9 @@ const movieA = new MovieItem({
   movieRate: "IMDb: 9.2 (360778)",
   movieImageUrl:
     "http://www.komilfobook.ru/media/zoo/images/cover1_05ccd38953ec28234ead09c57784b878.jpg",
-  });
-  
-  const movieC = new MovieItem({
+});
+
+const movieC = new MovieItem({
   movieTitleOrig: "August Rash",
   movieTitleRus: "Август Раш",
   movieInfo: {
@@ -108,9 +92,9 @@ const movieA = new MovieItem({
   movieRate: "IMDb: 7.5 (102875)",
   movieImageUrl:
     "https://static.hdrezka.ac/i/2014/4/8/s93c5f0aa9673po43p83d.jpg",
-  });
-  
-  const movieD = new MovieItem({
+});
+
+const movieD = new MovieItem({
   movieTitleOrig: "The Social Network",
   movieTitleRus: "Социальная сеть",
   movieInfo: {
@@ -120,7 +104,7 @@ const movieA = new MovieItem({
     director: "Дэвид Финчер",
     scenario: "Аарон Соркин",
     producer:
-    "Кевин Спейси, Дана Брунетти, Шон Чаффин, Майкл Де Лука, Скотт Рудин",
+      "Кевин Спейси, Дана Брунетти, Шон Чаффин, Майкл Де Лука, Скотт Рудин",
     camera: "Джефф Кроненвет",
     composer: "	Трент Резнор, Аттикус Росс",
   },
@@ -144,15 +128,16 @@ const movieA = new MovieItem({
   movieRate: "IMDb: 7.7 (616692)",
   movieImageUrl:
     "https://images-na.ssl-images-amazon.com/images/I/518zV7F39qL._AC_.jpg",
-  });
-  
-  const moviesTestObj = {
+});
+
+const moviesTestObj = {
   id1: movieA,
   id2: movieB,
   id3: movieC,
   id4: movieD,
-  };
-  
-  
+};
 
-  export default moviesTestObj
+const moviesJson = JSON.stringify(moviesTestObj);
+localStorage.setItem("movies", moviesJson);
+
+export default moviesJson;
