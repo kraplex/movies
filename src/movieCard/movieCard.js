@@ -14,24 +14,17 @@ class MovieCard {
     });
 
     this.movieCard.addEventListener("click", (event) => {
-        event.preventDefault();
-        console.log(event)
-      });
+      event.preventDefault();
+      if(event.target.href === `http://localhost:8080/list-${movie.id}`){
+        history.push(`/list-${movie.id}`);
+      }
+    });
   }
 
   render() {
     return this.movieCard;
   }
 
-  click(event) {
-    
-
-   /*  switch (event.target.value) {
-      case "Подробнее...":
-        history.push("/111");
-        break;
-    } */
-  }
 }
 
 export default MovieCard;
