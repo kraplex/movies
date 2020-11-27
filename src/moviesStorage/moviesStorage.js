@@ -130,14 +130,9 @@ const movieD = new MovieItem({
     "https://images-na.ssl-images-amazon.com/images/I/518zV7F39qL._AC_.jpg",
 });
 
-const moviesTestObj = {
-  id1: movieA,
-  id2: movieB,
-  id3: movieC,
-  id4: movieD,
-};
+const moviesTestArr = [movieA, movieB, movieC, movieD];
 
-const moviesJson = JSON.stringify(moviesTestObj);
-localStorage.setItem("movies", moviesJson);
+const moviesJson = JSON.stringify(moviesTestArr);
+
 
 export default moviesJson;

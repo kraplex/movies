@@ -8,8 +8,6 @@ class Header {
     this.header = renderTemplate(headerHtml);
     this.header.addEventListener("click", (event) => {
       event.preventDefault();
-      if (event.target.tagName !== "A") return;
-
       this.click(event);
     });
   }
@@ -19,10 +17,14 @@ class Header {
   }
 
   click(event) {
-    switch (event.target.tagName) {
-      case "A":
-        history.push("/list");
-        break;
+    if (event.target.tagName === "A") {
+      history.push("/list");
+    }
+    if (event.target === document.querySelector("form button")) {
+      console.log("Search");
+    }
+    if (event.target === document.querySelector("li button")) {
+      console.log("Add new");
     }
   }
 }
