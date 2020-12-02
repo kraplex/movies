@@ -11,7 +11,7 @@ const main = new MainTag();
 
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
-
+const input = document.querySelector("input");
 localStorage.setItem("movies", moviesJson);
 
 history.listen((listen) => {
@@ -30,5 +30,13 @@ history.listen((listen) => {
     const movie = movies.find((movie) => movie.id === movieId);
     const cinema = new MovieFullPage(movie);
     mainTag.appendChild(cinema.render());
+  }
+
+  if (listen.location.pathname === "/search") {
+    mainTag.innerHTML = "";
+    const searchRequest = input.value;
+    const movies = JSON.parse(localStorage.getItem("movies"));
+    
+    
   }
 });

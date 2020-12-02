@@ -21,7 +21,7 @@ class Header {
       history.push("/list");
     }
     if (event.target === document.querySelector("form button")) {
-      console.log("Search");
+      history.push("/search");
     }
     if (event.target === document.querySelector("li button")) {
       console.log("Add new");
