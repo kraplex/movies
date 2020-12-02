@@ -14,17 +14,41 @@ class MovieCard {
 
     this.movieCard.addEventListener("click", (event) => {
       event.preventDefault();
+      const buttonsEditMovie = Array.from(
+        document.querySelectorAll("#editMovie")
+      );
+      const buttonsDeleteMovie = Array.from(
+        document.querySelectorAll("#deleteMovie")
+      );
 
       if (event.target.href === `http://localhost:8080/list-${movie.id}`) {
         history.push(`/list-${movie.id}`);
       }
 
-      if (event.target === document.querySelector("#edit")) {
+      if (
+        buttonsEditMovie.some((item) => {
+          return event.target === item;
+        })
+      ) {
         console.log("edit");
       }
 
-      if (event.target === document.querySelector("#delete")) {
-        console.log("delete");
+      if (
+        buttonsDeleteMovie.some((item) => {
+          return event.target === item;
+        })
+      ) {
+        let result = confirm(`Удалить "${movie.movieTitleRus}"?`);
+        if (result) {
+          const movies = JSON.parse(localStorage.getItem("movies"));
+          const movieForDelete = movies.findIndex((item) => {
+            return item.id === movie.id;
+          });
+          movies.splice(movieForDelete, 1);
+          localStorage.clear();
+          localStorage.setItem("movies", JSON.stringify(movies));
+          history.push("/list");
+        }
       }
     });
   }
