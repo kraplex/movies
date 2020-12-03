@@ -26,6 +26,8 @@ class Header {
     if (event.target === document.querySelector("li button")) {
       console.log("Add new");
     }
+  
+
   }
 }
 

@@ -5,17 +5,18 @@ import MainTag from "./mainTag/mainTag";
 import MovieCard from "./movieCard/movieCard";
 import MovieFullPage from "./movieFullPage/movieFullPage";
 import moviesJson from "./moviesStorage/moviesStorage";
+import search from "./searchFunction/searchFunction";
 
 const header = new Header();
 const main = new MainTag();
 
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
-const input = document.querySelector("input");
+const inputSearch = document.querySelector("input");
 localStorage.setItem("movies", moviesJson);
+const movies = JSON.parse(localStorage.getItem("movies"));
 
 history.listen((listen) => {
-  const movies = JSON.parse(localStorage.getItem("movies"));
   if (listen.location.pathname === "/list") {
     mainTag.innerHTML = "";
     movies.forEach((movie) => {
@@ -33,10 +34,17 @@ history.listen((listen) => {
   }
 
   if (listen.location.pathname === "/search") {
-    mainTag.innerHTML = "";
-    const searchRequest = input.value;
-    const movies = JSON.parse(localStorage.getItem("movies"));
-    
-    
+    if (inputSearch.value.length < 3) {
+      alert("Пожалуйста, введите более 2 символов");
+    } else {
+      mainTag.innerHTML = "";
+      const movieIndexToRender = search(inputSearch.value);
+      if (movieIndexToRender === -1) {
+        alert("Ничего не найдено. Уточните поисковый запрос");
+      } else {
+        const movieToRender = new MovieCard(movies[movieIndexToRender]);
+        mainTag.appendChild(movieToRender.render());
+      }
+    }
   }
 });
