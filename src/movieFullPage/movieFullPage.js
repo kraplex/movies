@@ -1,4 +1,3 @@
-import template from "lodash.template";
 import movieFullPageHtml from "./movieFullPage.html";
 import { renderTemplate } from "../template-utils/template-utils";
 

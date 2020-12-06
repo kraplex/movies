@@ -14,7 +14,7 @@ const main = new MainTag();
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
 const inputSearch = document.querySelector("input");
-localStorage.setItem("movies", moviesJson);
+//localStorage.setItem("movies", moviesJson);
 
 
 /////
