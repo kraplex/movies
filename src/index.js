@@ -4,7 +4,6 @@ import history from "./history/history";
 import MainTag from "./mainTag/mainTag";
 import MovieCard from "./movieCard/movieCard";
 import MovieFullPage from "./movieFullPage/movieFullPage";
-import moviesJson from "./moviesStorage/moviesStorage";
 import search from "./searchFunction/searchFunction";
 import Modal from "./modal/modal";
 
@@ -14,12 +13,18 @@ const main = new MainTag();
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
 const inputSearch = document.querySelector("input");
-//localStorage.setItem("movies", moviesJson);
+if (!localStorage.getItem("movies")) {
+  const movies = [];
+  localStorage.setItem("movies", JSON.stringify(movies));
+}
 
 
-/////
+
+
+
+///// переделать под модальное поведение
 const modal = new Modal();
-mainTag.innerHTML = "";
+
 mainTag.appendChild(modal.render());
 /////
 

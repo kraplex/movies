@@ -8,6 +8,7 @@ class MovieItem {
     this.movieTitleOrig = props.movieTitleOrig;
     this.movieTitleRus = props.movieTitleRus;
     this.movieInfo = props.movieInfo;
+    this.movieTeam = props.movieTeam;
     this.movieActors = props.movieActors;
     this.movieDescription = props.movieDescription;
     this.like = props.like;
