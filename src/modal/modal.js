@@ -1,6 +1,7 @@
 import modalHtml from "./modal.html";
 import { renderTemplate } from "../template-utils/template-utils";
 import MovieItem from "../movieItem/movieItem";
+import history from "../history/history";
 
 class Modal {
   constructor() {
@@ -33,6 +34,7 @@ class Modal {
       const movies = JSON.parse(localStorage.getItem("movies"));
       movies.push(movie);
       localStorage.setItem("movies", JSON.stringify(movies));
+      history.push("/list");
     }
   }
 }

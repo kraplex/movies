@@ -9,38 +9,42 @@ import Modal from "./modal/modal";
 
 const header = new Header();
 const main = new MainTag();
+const modal = new Modal();
 
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
+mainTag.appendChild(modal.render());
 const inputSearch = document.querySelector("input");
+
 if (!localStorage.getItem("movies")) {
   const movies = [];
   localStorage.setItem("movies", JSON.stringify(movies));
 }
 
-
-
-
-
-///// переделать под модальное поведение
-const modal = new Modal();
-
-mainTag.appendChild(modal.render());
-/////
-
-
 history.listen((listen) => {
   if (listen.location.pathname === "/list") {
     mainTag.innerHTML = "";
+    
     const movies = JSON.parse(localStorage.getItem("movies"));
-    movies.forEach((movie) => {
-      const movieCard = new MovieCard(movie);
-      mainTag.appendChild(movieCard.render());
-    });
+
+    if (movies.length === 0) {
+      mainTag.innerHTML = `
+        <h1 class="mt-5 text-center text-uppercase">
+          Здесь пока ничего нет(
+        </h1>`;
+        mainTag.appendChild(modal.render());
+    } else {
+      movies.forEach((movie) => {
+        const movieCard = new MovieCard(movie);
+        mainTag.appendChild(movieCard.render());
+      });
+      mainTag.appendChild(modal.render());
+    }
   }
 
   if (listen.location.pathname.length === 42) {
     mainTag.innerHTML = "";
+    mainTag.appendChild(modal.render());
     const movies = JSON.parse(localStorage.getItem("movies"));
     const movieId = Array.from(listen.location.pathname).slice(6).join("");
     const movie = movies.find((movie) => movie.id === movieId);
@@ -53,6 +57,7 @@ history.listen((listen) => {
       alert("Пожалуйста, введите более 2 символов");
     } else {
       mainTag.innerHTML = "";
+      mainTag.appendChild(modal.render());
       const movies = JSON.parse(localStorage.getItem("movies"));
       const movieIndexToRender = search(inputSearch.value);
       if (movieIndexToRender === -1) {
