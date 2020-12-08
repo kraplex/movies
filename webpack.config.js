@@ -49,5 +49,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
   ],
 };

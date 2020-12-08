@@ -16,10 +16,15 @@ class Header {
   }
 
   click(event) {
-    if (event.target.tagName === "A") {
+    const searchField = document.querySelector("#search input");
+    if (event.target === document.querySelector("#showAllMovies")) {
       history.push("/list");
+      searchField.value = "";
     }
-    if (event.target === document.querySelector("form button")) {
+    if (
+      event.target === document.querySelector("#searchButton") ||
+      event.target === document.querySelector("#searchButton svg")
+    ) {
       history.push("/search");
     }
   }

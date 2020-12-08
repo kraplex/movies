@@ -14,6 +14,7 @@ class MovieCard {
 
     this.movieCard.addEventListener("click", (event) => {
       event.preventDefault();
+
       const buttonsEditMovie = Array.from(
         document.querySelectorAll("#editMovie")
       );

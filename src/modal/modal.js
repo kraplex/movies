@@ -7,7 +7,7 @@ class Modal {
   constructor() {
     this.modal = renderTemplate(modalHtml);
     this.modal.addEventListener("click", (event) => {
-      this.saveNewMovie(event);
+      this.addEditMovie(event);
     });
   }
 
@@ -15,7 +15,7 @@ class Modal {
     return this.modal;
   }
 
-  saveNewMovie(event) {
+  addEditMovie(event) {
     if (event.target === document.querySelector("#save")) {
       const movie = new MovieItem({
         movieTitleOrig: document.querySelector("#movieTitleOrig").value,

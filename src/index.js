@@ -24,7 +24,7 @@ if (!localStorage.getItem("movies")) {
 history.listen((listen) => {
   if (listen.location.pathname === "/list") {
     mainTag.innerHTML = "";
-    
+
     const movies = JSON.parse(localStorage.getItem("movies"));
 
     if (movies.length === 0) {
@@ -32,7 +32,7 @@ history.listen((listen) => {
         <h1 class="mt-5 text-center text-uppercase">
           Здесь пока ничего нет(
         </h1>`;
-        mainTag.appendChild(modal.render());
+      mainTag.appendChild(modal.render());
     } else {
       movies.forEach((movie) => {
         const movieCard = new MovieCard(movie);
@@ -59,12 +59,14 @@ history.listen((listen) => {
       mainTag.innerHTML = "";
       mainTag.appendChild(modal.render());
       const movies = JSON.parse(localStorage.getItem("movies"));
-      const movieIndexToRender = search(inputSearch.value);
-      if (movieIndexToRender === -1) {
+      const moviesToRender = search(inputSearch.value);
+      if (moviesToRender.length === 0) {
         alert("Ничего не найдено. Уточните поисковый запрос");
       } else {
-        const movieToRender = new MovieCard(movies[movieIndexToRender]);
-        mainTag.appendChild(movieToRender.render());
+        moviesToRender.forEach((item) => {
+          let movieToRender = new MovieCard(movies[item]);
+          mainTag.appendChild(movieToRender.render());
+        });
       }
     }
   }
