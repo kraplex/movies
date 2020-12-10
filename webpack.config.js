@@ -44,14 +44,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './src/template.html'), // шаблон
-      filename: 'index.html', // название выходного файла
+      template: path.resolve(__dirname, './src/template.html'), 
+      filename: 'index.html', 
     }),
     new MiniCssExtractPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
+    
   ],
 };

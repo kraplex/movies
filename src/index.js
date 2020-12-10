@@ -7,6 +7,7 @@ import MovieFullPage from "./movieFullPage/movieFullPage";
 import search from "./searchFunction/searchFunction";
 import Modal from "./modal/modal";
 
+
 const header = new Header();
 const main = new MainTag();
 const modal = new Modal();
@@ -15,6 +16,8 @@ document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
 mainTag.appendChild(modal.render());
 const inputSearch = document.querySelector("input");
+
+
 
 if (!localStorage.getItem("movies")) {
   const movies = [];

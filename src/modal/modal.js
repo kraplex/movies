@@ -7,7 +7,7 @@ class Modal {
   constructor() {
     this.modal = renderTemplate(modalHtml);
     this.modal.addEventListener("click", (event) => {
-      this.addEditMovie(event);
+      this.addMovie(event);
     });
   }
 
@@ -15,7 +15,7 @@ class Modal {
     return this.modal;
   }
 
-  addEditMovie(event) {
+  addMovie(event) {
     if (event.target === document.querySelector("#save")) {
       const movie = new MovieItem({
         movieTitleOrig: document.querySelector("#movieTitleOrig").value,
@@ -23,7 +23,7 @@ class Modal {
         movieInfo: {
           year: document.querySelector("#movieInfoYear").value,
           country: document.querySelector("#movieInfoCountry").value,
-          tagline: document.querySelector("#movieInfoTagline").value,
+          tagline: document.querySelector("#movieInfoTagline").value || "-",
           director: document.querySelector("#movieInfoDirector").value
         },
         movieActors: document.querySelector("#movieActors").value.split(","),

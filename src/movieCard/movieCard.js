@@ -1,6 +1,8 @@
 import movieCardHtml from "./movieCard.html";
 import { renderTemplate } from "../template-utils/template-utils";
 import history from "../history/history";
+import Modal from "../modal/modal";
+
 
 class MovieCard {
   constructor(movie) {
@@ -15,27 +17,31 @@ class MovieCard {
     this.movieCard.addEventListener("click", (event) => {
       event.preventDefault();
 
-      const buttonsEditMovie = Array.from(
-        document.querySelectorAll("#editMovie")
-      );
-      const buttonsDeleteMovie = Array.from(
-        document.querySelectorAll("#deleteMovie")
-      );
+      const buttonEditMovie = [
+        ...Array.from(document.querySelectorAll("#editMovie")),
+        ...Array.from(document.querySelectorAll("#editMovie svg")),
+      ];
+
+      const buttonDeleteMovie = [
+        ...Array.from(document.querySelectorAll("#deleteMovie")),
+        ...Array.from(document.querySelectorAll("#deleteMovie svg")),
+      ];
 
       if (event.target.href === `http://localhost:8080/list-${movie.id}`) {
         history.push(`/list-${movie.id}`);
       }
 
       if (
-        buttonsEditMovie.some((item) => {
+        buttonEditMovie.some((item) => {
           return event.target === item;
         })
       ) {
-        console.log("edit");
+        const modal = new Modal();
+    
       }
 
       if (
-        buttonsDeleteMovie.some((item) => {
+        buttonDeleteMovie.some((item) => {
           return event.target === item;
         })
       ) {
