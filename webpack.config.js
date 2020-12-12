@@ -48,7 +48,6 @@ module.exports = {
       filename: 'index.html', 
     }),
     new MiniCssExtractPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    
+    new webpack.HotModuleReplacementPlugin()    
   ],
 };

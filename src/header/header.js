@@ -27,6 +27,9 @@ class Header {
     ) {
       history.push("/search");
     }
+    if (event.target === document.querySelector("#addNewMovie")) {
+      $('#movieModal').modal();
+    }
   }
 }
 

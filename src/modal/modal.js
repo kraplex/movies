@@ -4,15 +4,23 @@ import MovieItem from "../movieItem/movieItem";
 import history from "../history/history";
 
 class Modal {
-  constructor() {
+  constructor(movie) {
+    if (movie === null || movie === undefined) {
+      this.modal = renderTemplate(modalHtml);
+    }
     this.modal = renderTemplate(modalHtml);
+  
     this.modal.addEventListener("click", (event) => {
       this.addMovie(event);
     });
   }
 
-  render() {
+  renderInHtml() {
     return this.modal;
+  }
+
+  editMovie() {
+    $("#movieModal").modal();
   }
 
   addMovie(event) {
@@ -24,7 +32,7 @@ class Modal {
           year: document.querySelector("#movieInfoYear").value,
           country: document.querySelector("#movieInfoCountry").value,
           tagline: document.querySelector("#movieInfoTagline").value || "-",
-          director: document.querySelector("#movieInfoDirector").value
+          director: document.querySelector("#movieInfoDirector").value,
         },
         movieActors: document.querySelector("#movieActors").value.split(","),
         movieDescription: document.querySelector("#movieDescription").value,

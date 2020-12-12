@@ -3,7 +3,6 @@ import { renderTemplate } from "../template-utils/template-utils";
 import history from "../history/history";
 import Modal from "../modal/modal";
 
-
 class MovieCard {
   constructor(movie) {
     this.movieCard = renderTemplate(movieCardHtml, {
@@ -36,8 +35,9 @@ class MovieCard {
           return event.target === item;
         })
       ) {
-        const modal = new Modal();
-    
+        console.log(movie.movieTitleRus)
+        const modalEdit = new Modal(movie);
+        modalEdit.editMovie();
       }
 
       if (
