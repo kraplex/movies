@@ -5,22 +5,16 @@ import history from "../history/history";
 
 class Modal {
   constructor(movie) {
-    if (movie === null || movie === undefined) {
-      this.modal = renderTemplate(modalHtml);
-    }
     this.modal = renderTemplate(modalHtml);
-  
+
     this.modal.addEventListener("click", (event) => {
+      event.preventDefault();
       this.addMovie(event);
     });
   }
 
   renderInHtml() {
     return this.modal;
-  }
-
-  editMovie() {
-    $("#movieModal").modal();
   }
 
   addMovie(event) {

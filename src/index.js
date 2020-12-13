@@ -11,17 +11,39 @@ const header = new Header();
 const main = new MainTag();
 const modal = new Modal();
 
-
 document.querySelector(".container").appendChild(header.render());
 const mainTag = document.querySelector(".container").appendChild(main.render());
 mainTag.appendChild(modal.renderInHtml());
 
 const inputSearch = document.querySelector("input");
 
-
-
 if (!localStorage.getItem("movies")) {
-  const movies = [];
+  const movies = [
+    {
+      id: "56467620-4793-4e46-848b-74f8358eb3ca",
+      movieActors: [
+        "Джастин Ройланд",
+        " Спенсер Грэммер",
+        " Сара Чок",
+        " Крис Парнелл",
+        " Эрик Бауза",
+        " Дэн Хэрмон",
+      ],
+      movieDescription:
+        "Рик и Морти - американский, научно-фантастический комедийно-приключенческий мультсериал. В центре внимания - неунывающая парочка, состоящая из внука-школьника и дедушки-ученого. Вместе они совершат много увлекательных путешествий и докажут существование невероятных явлений.",
+      movieImageUrl:
+        "https://static.posters.cz/image/750/%D0%9F%D0%BB%D0%B0%D0%BA%D0%B0%D1%82/rick-and-morty-watch-i50046.jpg",
+      movieInfo: {
+        year: "2013",
+        country: "США",
+        tagline: "-",
+        director: "Джефф Майерс",
+      },
+      movieRate: "9,2",
+      movieTitleOrig: "Rick and Morty",
+      movieTitleRus: "Рик и Морти",
+    },
+  ];
   localStorage.setItem("movies", JSON.stringify(movies));
 }
 

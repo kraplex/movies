@@ -35,9 +35,6 @@ class MovieCard {
           return event.target === item;
         })
       ) {
-        console.log(movie.movieTitleRus)
-        const modalEdit = new Modal(movie);
-        modalEdit.editMovie();
       }
 
       if (

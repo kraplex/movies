@@ -2,6 +2,8 @@ import headerHtml from "./header.html";
 import { renderTemplate } from "../template-utils/template-utils";
 import history from "../history/history";
 
+
+
 class Header {
   constructor() {
     this.header = renderTemplate(headerHtml);
@@ -28,7 +30,9 @@ class Header {
       history.push("/search");
     }
     if (event.target === document.querySelector("#addNewMovie")) {
+
       $('#movieModal').modal();
+
     }
   }
 }
