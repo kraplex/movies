@@ -2,16 +2,21 @@ import movieCardHtml from "./movieCard.html";
 import { renderTemplate } from "../template-utils/template-utils";
 import history from "../history/history";
 import Modal from "../modal/modal";
+import { timers } from "jquery";
 
 class MovieCard {
   constructor(movie) {
-    this.movieCard = renderTemplate(movieCardHtml, {
-      movieTitleRus: movie.movieTitleRus,
-      movieDescription: movie.movieDescription,
-      movieRate: movie.movieRate,
-      movieImageUrl: movie.movieImageUrl,
-      movieId: movie.id,
-    });
+    this.id = movie.id || "";
+    this.movieTitleOrig = movie.movieTitleOrig;
+    this.movieTitleRus = movie.movieTitleRus;
+    this.movieInfo = movie.movieInfo;
+    this.movieTeam = movie.movieTeam;
+    this.movieActors = movie.movieActors;
+    this.movieDescription = movie.movieDescription;
+    this.like = movie.like;
+    this.movieRate = movie.movieRate;
+    this.movieImageUrl = movie.movieImageUrl;
+    this.movieCard = renderTemplate(movieCardHtml, movie);
 
     this.movieCard.addEventListener("click", (event) => {
       event.preventDefault();
@@ -26,8 +31,8 @@ class MovieCard {
         ...Array.from(document.querySelectorAll("#deleteMovie svg")),
       ];
 
-      if (event.target.href === `http://localhost:8080/list-${movie.id}`) {
-        history.push(`/list-${movie.id}`);
+      if (event.target.href === `http://localhost:8080/list-${this.id}`) {
+        history.push(`/list-${this.id}`);
       }
 
       if (
@@ -35,6 +40,21 @@ class MovieCard {
           return event.target === item;
         })
       ) {
+        $("#movieModal").modal();
+        document.querySelector("#movieTitleRus").value = this.movieTitleRus;
+        document.querySelector("#movieTitleOrig").value = this.movieTitleOrig;
+        document.querySelector("#movieImageUrl").value = this.movieImageUrl;
+        document.querySelector("#movieInfoYear").value = this.movieInfo.year;
+        document.querySelector("#movieInfoCountry").value = this.movieInfo.country;
+        document.querySelector("#movieInfoTagline").value = this.movieInfo.tagline;
+        document.querySelector(
+          "#movieInfoDirector"
+        ).value = this.movieInfo.director;
+        document.querySelector("#movieActors").value = this.movieActors;
+        document.querySelector("#movieRate").value = this.movieRate;
+        document.querySelector("#movieDescription").value = this.movieDescription;
+        document.querySelector("#modalTitle").innerText = "Редактировать";   
+        document.querySelector("#movieId").value = this.id;   
       }
 
       if (
@@ -57,8 +77,9 @@ class MovieCard {
     });
   }
 
-  render() {
+  render() { 
     return this.movieCard;
+    
   }
 }
 

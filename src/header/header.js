@@ -30,8 +30,22 @@ class Header {
       history.push("/search");
     }
     if (event.target === document.querySelector("#addNewMovie")) {
-
       $('#movieModal').modal();
+      document.querySelector("#movieTitleRus").value ="";
+        document.querySelector("#movieTitleOrig").value = "";
+        document.querySelector("#movieImageUrl").value = "";
+        document.querySelector("#movieInfoYear").value = "";
+        document.querySelector("#movieInfoCountry").value = "";
+        document.querySelector("#movieInfoTagline").value = "";
+        document.querySelector(
+          "#movieInfoDirector"
+        ).value = "";
+        document.querySelector("#movieActors").value = "";
+        document.querySelector("#movieRate").value = "";
+        document.querySelector("#movieDescription").value = "";
+        document.querySelector("#modalTitle").innerText = "Добавить новый фильм"; 
+        document.querySelector("#movieId").value = ""; 
+
 
     }
   }
