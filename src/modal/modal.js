@@ -4,22 +4,9 @@ import MovieItem from "../movieItem/movieItem";
 import history from "../history/history";
 
 class Modal {
-  constructor(movie) {
-    if (movie === null || movie === undefined) {
-      this.modal = renderTemplate(modalHtml);
-    } else {
-      this.modal = renderTemplate(modalHtml);
-      this.id = movie.id;
-      this.movieTitleOrig = movie.movieTitleOrig;
-      this.movieTitleRus = movie.movieTitleRus;
-      this.movieInfo = movie.movieInfo;
-      this.movieTeam = movie.movieTeam;
-      this.movieActors = movie.movieActors;
-      this.movieDescription = movie.movieDescription;
-      this.like = movie.like;
-      this.movieRate = movie.movieRate;
-      this.movieImageUrl = movie.movieImageUrl;
-    }
+  constructor() {
+    this.modal = renderTemplate(modalHtml);
+    
     this.modal.addEventListener("click", (event) => {
       event.preventDefault();
       if (

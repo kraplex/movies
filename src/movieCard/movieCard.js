@@ -1,8 +1,6 @@
 import movieCardHtml from "./movieCard.html";
 import { renderTemplate } from "../template-utils/template-utils";
 import history from "../history/history";
-import Modal from "../modal/modal";
-import { timers } from "jquery";
 
 class MovieCard {
   constructor(movie) {
@@ -63,10 +61,10 @@ class MovieCard {
         let result = confirm(`Удалить "${movie.movieTitleRus}"?`);
         if (result) {
           const movies = JSON.parse(localStorage.getItem("movies"));
-          const movieForDelete = movies.findIndex((item) => {
+          const movieToDelete = movies.findIndex((item) => {
             return item.id === movie.id;
           });
-          movies.splice(movieForDelete, 1);
+          movies.splice(movieToDelete, 1);
           localStorage.clear();
           localStorage.setItem("movies", JSON.stringify(movies));
           history.push("/list");
@@ -76,8 +74,7 @@ class MovieCard {
   }
 
   render() { 
-    return this.movieCard;
-    
+    return this.movieCard;    
   }
 }
 
