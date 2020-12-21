@@ -23,11 +23,19 @@ class Modal {
     this.modal.addEventListener("click", (event) => {
       event.preventDefault();
       if (
-        (event.target === document.querySelector("#save")) &
-        (document.querySelector("#movieID").value !== "")
+        document.querySelector("#modalTitle").innerText ===
+          "Добавить новый фильм" &&
+        event.target === document.querySelector("#save")
       ) {
-        this.editMovie(document.querySelector("#movieID").value);
-      } else this.addMovie();
+        this.addMovie();
+      }
+
+      if (
+        document.querySelector("#modalTitle").innerText === "Редактировать" &&
+        event.target === document.querySelector("#save")
+      ) {
+        this.editMovie(document.querySelector("#movieId").value);
+      }
     });
   }
 
@@ -55,7 +63,7 @@ class Modal {
     const indexOfMovieToEdit = movies.findIndex((element) => {
       return element.id === id;
     });
-    movies.splice(indexOfMovieToEdit);
+    movies.splice(indexOfMovieToEdit, 1);
     movies.push(editedMovie);
     localStorage.setItem("movies", JSON.stringify(movies));
     history.push("/list");
@@ -76,6 +84,7 @@ class Modal {
       movieRate: document.querySelector("#movieRate").value,
       movieImageUrl: document.querySelector("#movieImageUrl").value,
     });
+
     const movies = JSON.parse(localStorage.getItem("movies"));
     movies.push(movie);
     localStorage.setItem("movies", JSON.stringify(movies));

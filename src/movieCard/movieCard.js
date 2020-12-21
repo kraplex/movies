@@ -47,15 +47,13 @@ class MovieCard {
         document.querySelector("#movieInfoYear").value = this.movieInfo.year;
         document.querySelector("#movieInfoCountry").value = this.movieInfo.country;
         document.querySelector("#movieInfoTagline").value = this.movieInfo.tagline;
-        document.querySelector(
-          "#movieInfoDirector"
-        ).value = this.movieInfo.director;
+        document.querySelector("#movieInfoDirector").value = this.movieInfo.director;
         document.querySelector("#movieActors").value = this.movieActors;
         document.querySelector("#movieRate").value = this.movieRate;
         document.querySelector("#movieDescription").value = this.movieDescription;
         document.querySelector("#modalTitle").innerText = "Редактировать";   
         document.querySelector("#movieId").value = this.id;   
-      }
+       }
 
       if (
         buttonDeleteMovie.some((item) => {
