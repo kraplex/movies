@@ -26,7 +26,7 @@ class Modal {
     });
   }
 
-  renderInHtml() {
+  render() {
     return this.modal;
   }
 
