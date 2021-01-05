@@ -45,6 +45,7 @@ function routing(path) {
     mainTag.innerHTML = "";
     mainTag.appendChild(modal.render());
     const movies = JSON.parse(localStorage.getItem("movies"));
+    console.log(movies)
     const movieId = Array.from(path).slice(6).join("");
     const movieTorender = movies.find((movie) => movie.id === movieId);
     const movieFullPage = new MovieFullPage(movieTorender);

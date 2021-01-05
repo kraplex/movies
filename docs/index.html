@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title></title>
+    <style>
+      header {
+        margin-right: -15px;
+        margin-left: -15px;
+      }
+      .search:hover svg {
+        fill: #ffffff;
+      }
+      main {
+        min-height: calc(100vh - 190px);
+      }
+      .movie-info > li {
+        position: relative;
+        padding-top: 15px;
+        border-bottom: 1px dotted var(--secondary);
+      }
+      .movie-info > li::before {
+        position: absolute;
+        top: 50%;
+        width: 16px;
+        height: 16px;
+        content: "";
+        transform: translateY(-50%);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='octicon octicon-chevron-right' viewBox='0 0 8 16' version='1.1' width='8' height='16' aria-hidden='true'%3E%3Cpath fill-rule='evenodd' fill='%236c757d' d='M7.5 8l-5 5L1 11.5 4.75 8 1 4.5 2.5 3l5 5z'%3E%3C/path%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+      }
+      .movie-info > li > p:first-child {
+        color: var(--orange);
+      }
+      [data-count]::after {
+        display: inline-block;
+        padding-left: 15px;
+        content: attr(data-count);
+      }
+      .btn-add-field,
+      .btn-remove-field {
+        width: 100%;
+        height: 38px;
+      }
+      .btn-add-field svg {
+        margin-top: -2px;
+      }
+      .card-title {
+        padding-right: 60px;
+      }
+      .card-footer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0.5rem 0.75rem;
+        border: 0;
+      }
+      .card-footer .btn {
+        width: 32px;
+        height: 32px;
+      }
+      .btn-edit:hover svg,
+      .btn-delete:hover svg,
+      .btn-add-field:hover svg,
+      .btn-remove-field:hover svg {
+        fill: #ffffff;
+      }
+    </style>
+  <link href="main.css" rel="stylesheet"></head>
+  <body>
+    <div class="container d-flex flex-column shadow-sm bg-white">
+  
+    </div>
+    <footer class="text-center my-5">
+      <h6 class="mb-0">Мир Кино | © 2020</h6>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
+  <script src="main.ff4d00c6794145593fad.js"></script></body>
+</html>
