@@ -21,7 +21,7 @@ mainTag.appendChild(modal.render());
 const inputSearch = document.querySelector("input");
 
 function routing(path) {
-  if (path === "/") {
+  if (path === "/movies") {
     document.querySelector(".container").appendChild(main.render());
   } else if (path === "/list") {
     mainTag.innerHTML = "";
